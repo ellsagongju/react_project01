@@ -21,8 +21,8 @@ function App() {
     console.log('bye')
   };
   
-  let post = '강남 우동 맛집';
   let [글제목, b] = useState(['여자 코트 추천','강남 우동맛집','파이썬독학']);
+  let [따봉, 따봉변경] = useState(0);
   // state를 써야 하는 이유는
   // state를 써야 하는 이유는
   // state를 써야 하는 이유는
@@ -30,7 +30,10 @@ function App() {
   // 글 제목으로 변수명을 저장했기 때문에 state 내용이 자동 return됨
   // state가 좋지만, 로고같은 변동 사항이 많지 않은 것은 state로 굳이 할 필요 없다.
 
-
+  // function 함수() {
+  //   console.log(1);
+  // }
+  // 함수 저장 하는 전통적인 예시
 
   // 함수실행
   // retrun을 할 때에는 한 개의 태그만 실행시킬 수 있기 떄문에 전체를 감싸는 div 처리를 하고 나머지는 감싼다.
@@ -45,7 +48,7 @@ function App() {
         <p>소제목이다</p>
       </div>
       <div className="list">
-        <h3>{글제목[0]}</h3>
+        <h3>{글제목[0]} <span onClick={()=>{따봉변경(따봉+1)}}>❤</span>{ 따봉}</h3>
         <p>글 내용이다.</p>
       </div>
       <div className="list">
