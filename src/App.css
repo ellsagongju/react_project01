@@ -1,7 +1,14 @@
+.header{
+    margin-bottom: 40px;
+}
 .black-nav{
     background-color: #000;
 }
 .black-nav h2{
     color: #fff;
     padding: 10px;
+}
+
+.list{
+    border-bottom: solid 1px #000;
 }
