@@ -104,12 +104,19 @@ function App() {
         console.log('hello')
       }}>hello</button>
       <button onClick={printbye}>bye</button>
-
+      <Modal></Modal>
 
 
     </React.Fragment>
     // </div>
   );
 }
+
+function Modal() {
+  return (
+    <div className="modal">모야모야</div>
+  )
+}
+// 1.반복적인 목록이 나오는 경우
 
 export default App;
