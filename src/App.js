@@ -1,50 +1,59 @@
-import React from 'react'; 
-// return 하는 div를 div에 넣지 않고 바로 root 바로 아래로 부르고 싶을때 app js에 react를 부른다
-import { useState } from 'react';
-// useState를 react에서 가져옴
+import React, { useState } from 'react'; 
+import './App.css'
 
 function App() {
-
-  const [numbero, setNumber] = useState(1);
-  // 파라미터로 함수를 변수저장
-  const double2 = (numbero) => {
-    setNumber(numbero * 2);
-    console.log(numbero);
-  };
-
-    let number = 1;
-  const double = (number) => {
-    return number * 2;
-  };
-  const printbye = () => {
-    console.log('bye')
-  };
-  
-  // 함수실행
-  // retrun을 할 때에는 한 개의 태그만 실행시킬 수 있기 떄문에 전체를 감싸는 div 처리를 하고 나머지는 감싼다.
-
-
+  let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
+  let [따봉, 따봉변경] = useState(0);
+  let [modal, setModal] = useState('false');
   return (
-    // <div className="App">
-    // React.Fragment를 부르면 바로 root  아래 div로 부를 수 있다.
-    <React.Fragment>
-      
+    <div className="App">
+      <div className="black-nav">
+        <h4>ReactBlog</h4>
+      </div>
 
-      <div>{numbero}</div>
-      <button onClick={double2}>x2</button>
-
-      <div>{double(number)}</div>
-      
       <button onClick={() => {
-        console.log('hello')
-      }}>hello</button>
-      <button onClick={printbye}>bye</button>
+        let titleCopy = [...글제목]
+        titleCopy[0] = '여자코트 추천';
+        글제목변경(titleCopy);
+      }}>글제목 수정하기</button>
 
+      <div className="blog_list">
+        <h5>{글제목[0]}<span onClick={() => { 따봉변경(따봉 + 1) }}>❤</span> {따봉}</h5>
+        <p>7월 발행</p>
+      </div>
+      <div className="blog_list">
+        <h5>{글제목[1]}</h5>
+        <p>7월 발행</p>
+      </div>
+      <div className="blog_list">
+        <h5>{글제목[2]}</h5>
+        <p>7월 발행</p>
+      </div>
 
+      <Modal></Modal>
+        {
+          modal == 2 ? <Modal></Modal> : null
+        }
+        {/* 조건식 ? 참일 떄 실행할 코드 : 거짓일 때 실행할 코드 */}
 
-    </React.Fragment>
-    // </div>
+    </div>
   );
 }
+
+
+function Modal(){
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <span>날짜</span>
+      <p>글 내용</p>
+    </div>
+  )
+}
+
+// [동적인 ui 만드는 step]
+// 1. html css로 미리 디자인 완성
+// 2. ui의 현재상태를 state로 저장
+
 
 export default App;
