@@ -3,8 +3,22 @@ import './App.css'
 
 function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState(['0','0','0']);
   let [modal, setModal] = useState('false');
+
+  // [1, 2, 3].map(function (a) {
+  //   console.log(a)
+  // });
+
+  // [1, 2, 3].map(function (b) { 
+  //   return '12342'
+  // });
+
+  // 1, 2, 3 보다 갯수가 많아지면 어쩔꺼임.계속 숫자 늘려줄거임 ?
+  //   아니지 결국 state를 이용한다 state useState로 저장한게 array 상태니까
+  // .map을 쓸 때 array 대신 useState의 이름을 가져다 놓으면 완성임
+
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -17,22 +31,51 @@ function App() {
         글제목변경(titleCopy);
       }}>글제목 수정하기</button>
 
+      
+      {/* 원래 했던 코드
       <div className="blog_list">
         <h5>{글제목[0]}<span onClick={() => { 따봉변경(따봉 + 1) }}>❤</span> {따봉}</h5>
         <p>7월 발행</p>
       </div>
       <div className="blog_list">
-        <h5>{글제목[1]}</h5>
+        <h5>{글제목[1]}<span onClick={()=> {setModal( modal = true)}}>모달띄우기</span></h5>
         <p>7월 발행</p>
       </div>
       <div className="blog_list">
         <h5>{글제목[2]}</h5>
         <p>7월 발행</p>
-      </div>
+      </div> */}
 
-      <Modal></Modal>
+      {/* 콜백함수를 쓰게 되면 */}
+        {/* {
+          글제목.map(function(a){
+            return(
+              <div className="blog_list">
+                <h5>{a}<span onClick={() => { 따봉변경(따봉 + 1) }}>❤</span> {따봉}</h5>
+                <p>7월 발행</p>
+              </div>
+            )
+          })
+      } */}
+       
+      {/* array 개수만큼 숫자가 늘어나는 정수 i */}
+              {
+          글제목.map(function(a, i){
+            return(
+              <div className="blog_list">
+                <h5>{글제목[i]}<span onClick={() => {
+                  따봉변경(따봉[i].map(function (a,i) {
+                    따봉 = 따봉+ 1;
+                  }))
+                }}>❤</span> {따봉}</h5>
+                <p>7월 발행</p>
+              </div>
+            )
+          })
+        }
+
         {
-          modal == 2 ? <Modal></Modal> : null
+          modal === true ? <Modal/> : null
         }
         {/* 조건식 ? 참일 떄 실행할 코드 : 거짓일 때 실행할 코드 */}
 
