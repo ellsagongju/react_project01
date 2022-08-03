@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
-  let [따봉, 따봉변경] = useState(['0','0','0']);
+  let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState('false');
 
   // [1, 2, 3].map(function (a) {
@@ -63,11 +63,15 @@ function App() {
           글제목.map(function(a, i){
             return(
               <div className="blog_list">
-                <h5>{글제목[i]}<span onClick={() => {
-                  따봉변경(따봉[i].map(function (a,i) {
-                    따봉 = 따봉+ 1;
-                  }))
-                }}>❤</span> {따봉}</h5>
+                <h5>
+                    {글제목[i]}
+                      <span onClick={(a) => {
+                        let copy = [...따봉];
+                        copy[i] = copy[i] + 1;
+                        따봉변경(copy);
+                      }}>❤</span> 
+                    {따봉[i]}
+                </h5>
                 <p>7월 발행</p>
               </div>
             )
