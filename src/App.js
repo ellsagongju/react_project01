@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
-  let [따봉, 따봉변경] = useState(['0','0','0']);
+  let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState('false');
 
   // [1, 2, 3].map(function (a) {
@@ -63,11 +63,18 @@ function App() {
           글제목.map(function(a, i){
             return(
               <div className="blog_list">
-                <h5>{글제목[i]}<span onClick={() => {
-                  따봉변경(따봉[i].map(function (a,i) {
-                    따봉 = 따봉+ 1;
-                  }))
-                }}>❤</span> {따봉}</h5>
+                <h5 onClick={()=> {setModal( modal = true)}}>
+                    {글제목[i]}
+                </h5>
+                <div>
+                  <span onClick={(a) => {
+                      let copy = [...따봉];
+                      copy[i] = copy[i] + 1;
+                      따봉변경(copy);
+                      }}>❤
+                  </span> 
+                  {따봉[i]}
+                </div>
                 <p>7월 발행</p>
               </div>
             )
@@ -75,7 +82,11 @@ function App() {
         }
 
         {
-          modal === true ? <Modal/> : null
+        modal === true ? <Modal 글제목={글제목} 글제목변경={() => {
+        let titleCopy = [...글제목]
+        titleCopy[0] = '여자코트 추천';
+        글제목변경(titleCopy);
+      }}  /> : null
         }
         {/* 조건식 ? 참일 떄 실행할 코드 : 거짓일 때 실행할 코드 */}
 
@@ -84,12 +95,13 @@ function App() {
 }
 
 
-function Modal(){
+function Modal(props){
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.글제목[0]}</h4>
       <span>날짜</span>
-      <p>글 내용</p>
+      <p></p>
+      <button onClick={props.글제목변경}>글수정</button>
     </div>
   )
 }
