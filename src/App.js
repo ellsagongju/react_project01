@@ -5,6 +5,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState('false');
+  let [title, setTitle] = useState('0');
 
   // [1, 2, 3].map(function (a) {
   //   console.log(a)
@@ -63,7 +64,7 @@ function App() {
           글제목.map(function(a, i){
             return(
               <div className="blog_list">
-                <h5 onClick={()=> {setModal( modal = true)}}>
+                <h5 onClick={() => { setModal(modal = true);  setTitle(i)}}>
                     {글제목[i]}
                 </h5>
                 <div>
@@ -80,13 +81,13 @@ function App() {
             )
           })
         }
+        
+      <button onClick={() => { setTitle(0) }}>글제목0</button>
+      <button onClick={() => { setTitle(1) }}>글제목1</button>
+      <button onClick={() => { setTitle(3) }}>글제목3</button>
 
         {
-        modal === true ? <Modal 글제목={글제목} 글제목변경={() => {
-        let titleCopy = [...글제목]
-        titleCopy[0] = '여자코트 추천';
-        글제목변경(titleCopy);
-      }}  /> : null
+        modal === true ? <Modal title={title} 글제목={글제목} /> : null
         }
         {/* 조건식 ? 참일 떄 실행할 코드 : 거짓일 때 실행할 코드 */}
 
@@ -98,10 +99,9 @@ function App() {
 function Modal(props){
   return (
     <div className="modal">
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <span>날짜</span>
       <p></p>
-      <button onClick={props.글제목변경}>글수정</button>
     </div>
   )
 }
