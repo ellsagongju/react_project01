@@ -3,9 +3,10 @@ import './App.css'
 
 function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이선독학'])
-  let [따봉, 따봉변경] = useState([0,0,0]);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState('false');
   let [title, setTitle] = useState('0');
+  let [입력값, 입력값변경] = useState('');
 
   // [1, 2, 3].map(function (a) {
   //   console.log(a)
@@ -65,23 +66,27 @@ function App() {
             return(
               <div className="blog_list">
                 <h5 onClick={() => { setModal(modal = true);  setTitle(i)}}>
-                    {글제목[i]}
-                </h5>
-                <div>
-                  <span onClick={(a) => {
+                  {글제목[i]}
+                  <span onClick={(e) => {
+                    e.stopPropagation();
                       let copy = [...따봉];
                       copy[i] = copy[i] + 1;
                       따봉변경(copy);
                       }}>❤
                   </span> 
                   {따봉[i]}
-                </div>
+                </h5>
                 <p>7월 발행</p>
               </div>
             )
           })
-        }
-        
+      }
+      
+      <input onChange={(e) => {
+        입력값변경(e.target.value)
+        console.log(입력값)
+      }}></input>
+
       <button onClick={() => { setTitle(0) }}>글제목0</button>
       <button onClick={() => { setTitle(1) }}>글제목1</button>
       <button onClick={() => { setTitle(2) }}>글제목2</button>
