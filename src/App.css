@@ -1,10 +1,54 @@
-.black-nav{
-    background-color: #000;
+.contents{
+    margin-left: 20px;
+    border-bottom: solid 1px #ccc;
+    padding: 20px;
 }
-.black-nav h4{
+.list_title{
+    font-size: 18px;
+    vertical-align: middle;
+}
+.good_btn{
+    display: inline-block;
+    font-size: 16px;
+    transition: 0.4s;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.good_btn:active{
+    font-size: 14px;
+    transition: 0.4s;
+}
+.change_btn{
+    display: flex;
+    margin-top: 10px;
+}
+.change_btn span{
+    display: block;
+    width: 80px;
+    height: 24px;
     color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 24px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.change_btn .edit_btn{
+    background-color: #0080ff;
+}
+.change_btn .del_btn{
+    background-color: #ff8080;
+}
+.change_btn .plus_btn{
+    background-color: #ace085;
+}
+.modal{
+    background-color: #eee;
 }
 
-.modal{
+.plus_contents{
+    margin: 20px;
+    padding:20px;
     background-color: #eee;
 }

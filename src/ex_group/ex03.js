@@ -86,16 +86,10 @@ function App() {
         입력값변경(e.target.value)
         console.log(입력값)
       }}></input>
-
-<<<<<<< HEAD
+{/* 
       <button onClick={() => { setTitle(0) }}>글제목0</button>
       <button onClick={() => { setTitle(1) }}>글제목1</button>
-      <button onClick={() => { setTitle(2) }}>글제목2</button>
-=======
-      {/* <button onClick={() => { setTitle(0) }}>글제목0</button>
-      <button onClick={() => { setTitle(1) }}>글제목1</button>
       <button onClick={() => { setTitle(2) }}>글제목2</button> */}
->>>>>>> 154c1db5267629b7c7da51adf24f3cff74dcd481
 
         {
         modal === true ? <Modal title={title} 글제목={글제목} /> : null
@@ -123,7 +117,3 @@ function Modal(props){
 
 
 export default App;
-<<<<<<< HEAD
-=======
-Footer
->>>>>>> 154c1db5267629b7c7da51adf24f3cff74dcd481
