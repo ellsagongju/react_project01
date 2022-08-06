@@ -48,15 +48,17 @@ function App() {
       }
 
       {
-        modal === true ? <Modal title={title} titleNum={titleNum}></Modal> : null
+        modal === true ? <Modal title={title} titleNum={titleNum} setModal={setModal}></Modal> : null
       }
       <div className='plus_contents'>
         <div className='change_btn'>
             <input onChange={(e) => {
               setChange(e.target.value)
-            }} placeholder="왜 한번 다른 동작을 하고 와야 실행되나"></input>
-            <span className='plus_btn' onClick={() => { 
-              title.push(change);
+            }} placeholder="아까 했던것 같은데.. 왜?"></input>
+          <span className='plus_btn' onClick={() => { 
+              let titleCopy = [...title];
+              titleCopy.push(change);
+              setTitle(titleCopy);
             }}>추가하기</span>
           </div>
         </div>
@@ -68,6 +70,9 @@ function App() {
 function Modal(props) {
   return (
     <div className='modal'>
+      <span className='close_modal' onClick={() => { 
+        props.setModal(false);
+      }}>x</span>
       <h3>{props.title[props.titleNum] }</h3>
       <p>모달 내용입니다.</p>
     </div>
