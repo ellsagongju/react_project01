@@ -38,8 +38,9 @@ function App() {
                   setTitle(titleCopy);
                 }}>수정하기</span>
                 <span className='del_btn' onClick={(i) => {
-
-                  title.slice(i);
+                  let titleCopy = [...title];
+                  titleCopy.splice(i,1);
+                  setTitle(titleCopy);
                  } }>삭제하기</span>
               </div>
             </div>
