@@ -13,9 +13,9 @@ function App() {
       {
         title.map(function (a, i) { 
           return (
-            <div className='contents'>
+            <div className='contents' key={i}>
               <h2 className='list_title' onClick={() => { 
-                setModal(modal === true); setTitleNum(i)
+                setModal(true); setTitleNum(i)
               }}>
                 {title[i]}
                 <span className='good_btn' onClick={(e) => { 
@@ -57,7 +57,6 @@ function App() {
             }} placeholder="왜 한번 다른 동작을 하고 와야 실행되나"></input>
             <span className='plus_btn' onClick={() => { 
               title.push(change);
-              
             }}>추가하기</span>
           </div>
         </div>
