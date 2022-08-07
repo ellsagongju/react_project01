@@ -7,7 +7,9 @@ function App() {
   let [modal, setModal] = useState('true') 
   let [titleNum, setTitleNum] = useState('')
   let [change, setChange] = useState('')
-
+  let [change2, setChange2] = useState(0)
+  let [toDate, setToDate]= useState('')
+  
   return (
     <div className='app'>
       {
@@ -27,7 +29,15 @@ function App() {
                 {good[i] }
               </h2>
               <p>글 내용입니다.</p>
-              <span>2022.08.06</span>
+              <span>
+                {
+                  () => {
+                    let now = [...toDate]
+                    now = new Date();
+                    setToDate(now)
+                   }
+                }
+              </span>
               <div className='change_btn'>
                 <input onChange={(e) => {
                   setChange(e.target.value)
@@ -47,6 +57,9 @@ function App() {
           )
         })
       }
+      {
+        
+      }
 
       {
         modal === true ? <Modal title={title} titleNum={titleNum} setModal={setModal}></Modal> : null
@@ -56,10 +69,15 @@ function App() {
             <input onChange={(e) => {
               setChange(e.target.value)
             }} placeholder="아까 했던것 같은데.. 왜?"></input>
-          <span className='plus_btn' onClick={() => { 
+          <span className='plus_btn' onClick={(i) => { 
               let titleCopy = [...title];
+              let copyGood = [...good];
+            
               titleCopy.push(change);
+              copyGood.push(change2);
+            
               setTitle(titleCopy);
+              setGood(copyGood);
             }}>추가하기</span>
           </div>
         </div>
@@ -76,6 +94,7 @@ function Modal(props) {
       }}>x</span>
       <h3>{props.title[props.titleNum] }</h3>
       <p>모달 내용입니다.</p>
+      <span></span>
     </div>
   )
  }
